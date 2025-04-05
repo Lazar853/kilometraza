@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izracunavanje kilometara</title>
+</head>
+<body>
+    <script>
+        function Izracunaj(){
+            var pk = parseInt(document.kilometri['p-k'].value);
+            var kk = parseInt(document.kilometri['k-k'].value);
+            var uk = kk - pk;
+            var p1k, d2k, sk;
+            if(uk%2 == 0) {
+                p1k = d2k = uk / 2;
+                sk = pk + (uk / 2);
+            }
+            else {
+                p1k = Math.floor(uk / 2) + 1;
+                d2k = Math.floor(uk / 2);
+                sk = pk + Math.floor(uk / 2) + 1;
+            }
+
+            document.kilometri['u-k'].value = uk;
+            document.kilometri['p1-k'].value = p1k;
+            document.kilometri['d2-k'].value = d2k;
+            document.kilometri['s-k'].value = sk;
+        }
+    </script>
+    <form method="post" name="kilometri">
+        <p>Pocetni kilometri: </p>
+        <input type="text" name="p-k">
+        <br>
+        <p>Krajnji kilometri</p>
+        <input type="text" name="k-k">
+        <br>
+        <br>
+        <input type="button" value="Izracnuaj" name="dugme" onclick="Izracunaj()">
+        <br>
+        <hr>
+        <p>Ukupno predjeno kilometara: </p>
+        <input type="text" name="u-k" readonly>
+        <br>
+        <br>
+        <p>Kilometara predjeno po casu: </p>
+        <input type="text" name="p1-k" readonly>
+        <input type="text" name="d2-k" readonly>
+        <br>
+        <br>
+        <p>Kilometraza izmedju dva casa: </p>
+        <input type="text" name="s-k" readonly>
+    </form>
+</body>
+</html>
